@@ -1,0 +1,35 @@
+body {
+  background: #f8f8f8;
+  font-family: "Segoe UI";
+  color: #333;
+}
+
+.container {
+  background: #fff;
+  padding: 30px;
+  margin: 20px auto;
+  border-radius: 12px;
+  width: 900px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  color: #800000;
+}
+
+input, button, select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin: 5px 0;
+}
+
+button {
+  background: #800000;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #a00000;
+}
