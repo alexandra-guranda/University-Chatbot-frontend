@@ -11,22 +11,17 @@ const commonApi = axios.create({
 });
 
 // ----- CHATBOT & AUTH -----
-
 export const sendMessageToChatbot = (message, sessionId) =>
     commonApi.post("/chatbot/chat", { message, sessionId });
 
 export const checkApiHealth = () =>
     commonApi.get("/chatbot/health");
 
-// Notă: Backend-ul tău actual nu are un controller de Login,
-// dar acest endpoint este necesar pentru funcționarea store-ului auth.js
 export const loginApi = (email, password) =>
-    commonApi.post("/auth/login", { email, password });
+    axios.post("http://localhost:8080/api/auth/login", { email, password });
 
 
 // ----- COURSES (Cursuri) -----
-
-// Folosește RequestParam conform UniversityController.java
 export const addCourseApi = (name, departmentId) =>
     api.post(`/courses`, null, {
         params: { name, departmentId },
@@ -37,8 +32,6 @@ export const listCoursesApi = () =>
 
 
 // ----- STUDENTS (Studenți) -----
-
-// Folosește RequestParam conform UniversityController.java
 export const addStudentApi = (name, email) =>
     api.post(`/students`, null, {
         params: { name, email },
@@ -47,7 +40,6 @@ export const addStudentApi = (name, email) =>
 export const listStudentsApi = () =>
     api.get(`/students`);
 
-// Folosește PathVariable pentru studentId și RequestParam pentru courseId
 export const assignStudentApi = (studentId, courseId) =>
     api.put(`/students/${studentId}/assign`, null, {
         params: { courseId },
@@ -58,13 +50,17 @@ export const dropStudentApi = (studentId) =>
 
 
 // ----- DEPARTMENTS (Departamente) -----
-
 export const listDepartmentsApi = () =>
     api.get(`/departments`);
 
+// AM PĂSTRAT DOAR O SINGURĂ DECLARARE AICI:
+export const addDepartmentApi = (name) =>
+    api.post(`/departments`, null, {
+        params: { name }
+    });
+
 
 // ----- SECRETARIAT & STATS (Statistici) -----
-
 export const getStudentsPerDepartmentApi = () =>
     api.get(`/secretariat/students-per-department`);
 
